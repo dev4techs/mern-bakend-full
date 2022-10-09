@@ -78,6 +78,8 @@ const Profile=()=>{
                             <ListItemText
                                  primary={user.name} secondary={user.email}
                             />
+                          
+                            
                             {auth.isAuthenticated().user && auth.isAuthenticated().user._id === user._id && (<ListItemSecondaryAction >
                             <IconButton edge="end" aria-label="delete"  onClick={handleDelete}>
                                     <DeleteIcon />
@@ -89,6 +91,9 @@ const Profile=()=>{
                             </IconButton>
                             </Link>
                             </ListItemSecondaryAction>)}
+                </ListItem>
+                <ListItem>
+                    <ListItemText  primary={user.about} />
                 </ListItem>
                     <Divider />
                     <ListItem>

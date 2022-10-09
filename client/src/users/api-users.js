@@ -49,7 +49,6 @@ const read = async(signal,params,credentials)=>{
 
             }
         })
-        console.log("getting response: ",response)
         return await response.json()
 
     }
@@ -59,21 +58,21 @@ const read = async(signal,params,credentials)=>{
     }
 }
 
-const userupdate=async(user,params,credentials)=>{
+const userupdate= async(user,params,credentials)=>{
     try{
-        console.log("coming to update")
-        let response = await fetch('/api/users/'+params.userId,{
-            method: 'PUT',
-            headers:{
-                "Accept": 'application/json',
-                "Content-Type" : 'application/json',
-                "Authorization": 'Bearer '+ credentials.t
+        console.log("FormData() to put in fetch request: ", user)
 
-            },
-            body: JSON.stringify(user)
+        const response = await fetch('/api/users/'+params.userId,{
+            method: 'PUT',
+            headers: { "Authorization": 'Bearer '+ credentials.t},
+            body: user
+            // body: JSON.stringify(user)
         })
-        console.log("update response",response)
-        return await response.json()
+        
+        const result=  await response.json()
+        console.log("userupdate response result: ",result)
+        return result
+
 
     }
     catch(err)

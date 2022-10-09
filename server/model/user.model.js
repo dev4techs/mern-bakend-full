@@ -18,6 +18,16 @@ var UserSchema = new Schema(
             match: [/.+\@.+\..+/, 'Please fill a valid email address'],
             required: 'Email is required'
         },
+        about:
+        {
+            type: String, 
+            trim: true
+        },
+        photo:
+        {
+            data: Buffer,
+            contentType: String
+        },
         created:
         {
             type: Date,

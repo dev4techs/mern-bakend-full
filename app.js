@@ -2,14 +2,16 @@ const createError = require('http-errors');
 const express = require('express');
 const logger = require('morgan');
 const userRouter = require('./server/routes/user.routes');
-const authRouter = require('./server/routes/auth.routes')
+const authRouter = require('./server/routes/auth.routes');
+
 const app = express();
+
 require('./db');
 
 app.use(logger('dev'));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-
 
 
 // app.use('/', indexRouter);
